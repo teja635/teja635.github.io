@@ -1,0 +1,8 @@
+Welcome to Teja 1.0.0 LTS (Teja 1.0.0-1-generic x86_64)
+
+ * List all commands:   help
+ * List all files:      ls [-l]
+ * Display File Content cat <filename>
+ * Go to resume         resume
+ * List Social media    smedia
+ * List Projects        projects -n [number] (defaults to all projects

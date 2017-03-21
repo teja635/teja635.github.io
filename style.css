@@ -1,0 +1,12 @@
+body {
+    background-color: black;
+    white-space: pre;
+}
+
+p {
+    margin: 0px; 
+    padding: 0px; 
+    font-family: courier new;
+    color: green;
+    white-space: pre;
+}

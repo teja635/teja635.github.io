@@ -1,2 +1,3 @@
-# teja635.github.io
-Personal Website
+# Teja's Personal Website
+Command Line interface to view parts of my resume, see awards, and explore various projects. 
+

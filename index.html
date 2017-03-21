@@ -1,0 +1,86 @@
+<html>
+    <head>
+        <title> Teja Ambati </title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    </head>
+    <body>
+        <p id="ascii_art"><b></b></p>
+        <p>UNIX Based Shell! Type help to see all commands!</p>
+        <table id='commands'>
+
+            <tr><td><p><b style="color: red">user</b> <b style="color: gray"> at </b> <b style="color: orange">teja_ambati_resume</b> <b style="color: gray">in ~</b></p></td></tr>
+
+            <tr><td><p><b style="color: purple">$</b> <b id="user_input"></b></p></td></tr>
+
+        </table>
+        <script>
+            function ajaxCallBack(data) {
+                    var table = document.getElementById("commands");
+                    var row3 = table.insertRow(document.getElementById('commands').rows.length-2);
+                    var content_cell = row3.insertCell(0);
+                    content_cell.innerHTML = "<p>" + data + "</p>";
+            }
+            function getResponse(request) {
+                var text = '';
+                if(request == "help") {
+                    console.log(request);
+                    $.ajax(
+                        {
+                            url:'help.txt', 
+                            success: function(data) {
+                                ajaxCallBack(data);
+                            }
+                        }
+                    );
+                }
+                else if(request.substring(0, 2) == "ls"){
+                    if(request.substring(request.index('-') != -1){
+                        -rw-r--r--  1 teja teja 8.8K Jul 12  2016 
+                    }
+                }
+                console.log("hella" + text);
+                return text;
+            }
+            var text = "";
+            $.ajax(
+                {  
+                    url:'ascii_teja.txt',  
+                    success: function (data){     
+                        text = data; 
+                    } 
+                }
+            );
+            var i = 0; 
+            var x = setInterval(function() {
+                document.getElementById('ascii_art').innerText = text.substring(0, i);
+                i++;
+            }, 1);
+            document.onkeypress = function(e) {   
+                var curr_text = document.getElementById('user_input').innerText;
+                e = e|| window.event;   
+                var charCode = e.keyCode || e.which;  
+                if(charCode === 13){
+                    var table = document.getElementById("commands");
+                    var row = table.insertRow(document.getElementById('commands').rows.length-2);
+                    var row2 = table.insertRow(document.getElementById('commands').rows.length-2);
+                    var cell1 = row.insertCell(0);
+                    var cell2 = row2.insertCell(0);
+                    cell1.innerHTML = '<p><b style="color: red">user</b> <b style="color: gray"> at </b> <b style="color: orange">teja_ambati_resume</b> <b style="color: gray">in ~</b></p>';
+                    cell2.innerHTML = "<p><b style='color: purple'>$</b> " + curr_text + "</p>";
+                    console.log(getResponse(curr_text));
+                    console.log(document.getElementById("user_input").innerText)
+                    document.getElementById("user_input").innerText = "";
+
+                }
+                else if(charCode === 8){
+                    document.getElementById('user_input').innerText = curr_text.substring(0, curr_text.length-1);
+                }
+                else{
+                    var charStr = String.fromCharCode(charCode);
+                    document.getElementById('user_input').innerText = curr_text + charStr;
+                }
+            }
+        </script>
+    </body>
+</html>
